@@ -1,4 +1,4 @@
-# TequieromuchoCam-<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -11,6 +11,7 @@ body {
     overflow: hidden;
     background: linear-gradient(135deg, #ff758c, #ff7eb3);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: Arial, sans-serif;
@@ -18,8 +19,21 @@ body {
 
 h1 {
     color: white;
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     text-shadow: 0 0 10px rgba(0,0,0,0.4);
+    z-index: 2;
+    text-align: center;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4f81;
+    cursor: pointer;
     z-index: 2;
 }
 
@@ -42,13 +56,17 @@ h1 {
 <body>
 
 <h1>💖 Te quiero mucho 💖</h1>
+<button onclick="playMusic()">Toca aquí 💕</button>
 
-<!-- Música -->
-<audio autoplay loop>
+<audio id="music" loop>
     <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+function playMusic() {
+    document.getElementById("music").play();
+}
+
 function crearCorazon() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -57,9 +75,7 @@ function crearCorazon() {
     heart.style.animationDuration = (3 + Math.random() * 5) + "s";
     document.body.appendChild(heart);
 
-    setTimeout(() => {
-        heart.remove();
-    }, 8000);
+    setTimeout(() => heart.remove(), 8000);
 }
 
 setInterval(crearCorazon, 300);
